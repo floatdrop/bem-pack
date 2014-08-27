@@ -1,7 +1,6 @@
-# gulp-bem-js-pack
+# gulp-bem-js-pack ![experimental](http://img.shields.io/badge/status-experimental-red.svg?style=flat)
 
-![experimental](http://img.shields.io/badge/status-experimental-red.svg?style=flat)
- [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
 
 Packing CommonJS modules with respect of levels of definition.
 
