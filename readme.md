@@ -22,7 +22,7 @@ var gulp = require('gulp');
 var bempack = require('gulp-bem-js-pack');
 
 gulp.src(['base/*.js', 'main/*.js'])
-    .pipe(bempack())
+    .pipe(bempack('index.js'))
     .pipe(gulp.dest('dist'));
 ```
 
