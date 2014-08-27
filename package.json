@@ -1,0 +1,28 @@
+{
+  "name": "gulp-bem-js-pack",
+  "version": "0.0.0",
+  "description": "Packing CommonJS modules in BEM-compatible way",
+  "keywords": [
+    "BEM",
+    "browserify",
+    "packing",
+    "javascript"
+  ],
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/floatdrop/bem-pack.git"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.0",
+    "through2": "^0.6.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "mocha": "*"
+  },
+  "main": "index.js"
+}
