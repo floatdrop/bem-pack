@@ -17,7 +17,9 @@
     "url": "git://github.com/floatdrop/bem-pack.git"
   },
   "dependencies": {
+    "browserify": "^5.10.1",
     "gulp-util": "^3.0.0",
+    "should": "^4.0.4",
     "through2": "^0.6.1"
   },
   "devDependencies": {
