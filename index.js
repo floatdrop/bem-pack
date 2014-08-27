@@ -4,9 +4,11 @@ var PluginError = gutil.PluginError;
 var path = require('path');
 var browserify = require('browserify');
 
-module.exports = function (bemjson, fileName, options) {
+module.exports = function (fileName, options) {
     options = options || {};
     var b = browserify({ignoreMissing: true});
+
+    var firstFile = null;
 
     var depses = {};
     var depsFiller = through.obj(function (row, enc, next) {
@@ -22,6 +24,7 @@ module.exports = function (bemjson, fileName, options) {
     b.pipeline.get('deps').push(depsFiller);
 
     function apply(obj, enc, cb) {
+        if (!firstFile) { firstFile = obj; }
         b.add(obj.path);
         cb(null);
     }
@@ -29,7 +32,12 @@ module.exports = function (bemjson, fileName, options) {
     function compile() {
         b.bundle(function (err, buf) {
             if (err) { return this.emit('error', new PluginError('gulp-bem-js-pack', err)); }
-            this.emit('data', buf);
+            if (firstFile) {
+                var joinedFile = firstFile.clone();
+                joinedFile.path = path.join(firstFile.base, fileName);
+                joinedFile.contents = buf;
+                this.emit('data', joinedFile);
+            }
             this.emit('end');
         }.bind(this));
     }

@@ -1,6 +1,6 @@
 # gulp-bem-js-pack ![experimental](http://img.shields.io/badge/status-experimental-red.svg?style=flat)
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Packing CommonJS modules with respect of levels of definition.
 
@@ -21,14 +21,10 @@ module.exports = First + '!';
 var gulp = require('gulp');
 var bempack = require('gulp-bem-js-pack');
 
-gulp.src(['base/*.js', 'main/*.js']).pipe(gulp.dest('dist'));
+gulp.src(['base/*.js', 'main/*.js'])
+    .pipe(bempack())
+    .pipe(gulp.dest('dist'));
 ```
-
-## API
-
-### bempack.pack([options])
-
-Wrapper around `browser-pack` that takes stream of [BEM objects]()
 
 
 ## License

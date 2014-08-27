@@ -11,9 +11,9 @@ require('should');
 
 it('should pack single module', function (done) {
     gulp.src(oneFile)
-        .pipe(pack())
+        .pipe(pack('index.js'))
         .on('data', function (data) {
-            var f = new Function('return ' + data.toString())();
+            var f = new Function('return ' + data.contents.toString())();
             f(1).should.be.eql('Hello!');
             done();
         });
@@ -21,9 +21,9 @@ it('should pack single module', function (done) {
 
 it('should pack modules with same file name', function (done) {
     gulp.src([join(twoSameFiles, 'base/base.js'), join(twoSameFiles, 'main/base.js')])
-        .pipe(pack())
+        .pipe(pack('index.js'))
         .on('data', function (data) {
-            var f = new Function('return ' + data.toString())();
+            var f = new Function('return ' + data.contents.toString())();
             f(2).should.be.eql('main is overriding base');
             done();
         });
