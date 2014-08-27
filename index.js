@@ -6,17 +6,29 @@ var browserify = require('browserify');
 
 module.exports = function (bemjson, fileName, options) {
     options = options || {};
-    var b = browserify();
+    var b = browserify({ignoreMissing: true});
+
+    var depses = {};
+    var depsFiller = through.obj(function (row, enc, next) {
+        Object.keys(row.deps).forEach(function (key) {
+            if (row.deps[key] === undefined) {
+                row.deps[key] = depses[key];
+            }
+        });
+        var name = path.basename(row.file).split('.')[0];
+        depses[name] = row.file;
+        next(null, row);
+    });
+    b.pipeline.get('deps').push(depsFiller);
 
     function apply(obj, enc, cb) {
-        var name = path.basename(obj.path).split('.')[0];
-        b.add(obj.path, { expose: name });
+        b.add(obj.path);
         cb(null);
-        //cb(new PluginError('gulp-bem-js-pack', 'Not implemented yet'));
     }
 
     function compile() {
         b.bundle(function (err, buf) {
+            if (err) { return this.emit('error', new PluginError('gulp-bem-js-pack', err)); }
             this.emit('data', buf);
             this.emit('end');
         }.bind(this));
