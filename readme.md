@@ -8,12 +8,14 @@ If you pass file with same ID twice to module, it will require first module by i
 
 ```js
 // base/first.js (with ID `first`)
-module.exports = 'BASE';
+module.exports = 'base';
 
 // first.js (with ID `first`)
-var First = require('first'); // returns 'BASE'
-module.exports = First + '!';
+var First = require('first'); // returns 'base'
+module.exports = 'extended ' + First + '!'; // exports 'extended base'
 ```
+
+__Note:__ This plugin is sensitive to order, in which you write files to it.
 
 ## Usage
 
