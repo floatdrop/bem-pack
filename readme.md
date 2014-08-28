@@ -21,7 +21,39 @@ pack.add('base/base.js');
 
 ## Require layering
 
+This feature is really handy, when you want to achieve flexible extension of javascript files, that not exported in modules. In normal world to extend some `base` module you possible create `myBase` module and require `base` constructor from `myBase` constructor:
 
+```js
+// base.js
+module.exports = 'base';
+
+// myBase.js
+module.exports = require('./base.js') + ' extended!';
+```
+
+But in BEM world you have same filename for javascript file in different layers of definition (or directoires):
+
+```js
+// base/base.js
+module.exports = 'base';
+
+// site/base.js
+module.exports = require('./base.js') + ' extended!';
+```
+
+As you can see, snippet above will not work properly, because you should fix the path of the require call. Ofter there is no way to do this, because order of layers can change eventually. So we come up with this idea.
+
+Every bundled file will "export" module with it BEM identifier. For example `base__elem.js` will export `base__elem` module, that can be required in next bundled javascript file:
+
+```js
+// base/base.js
+module.exports = 'base';
+
+// site/base.js
+module.exports = require('base') + ' extended!';
+```
+
+This is not stable way of doing layered requires, but it seems nice and simple to implement.
 
 ## API
 
