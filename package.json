@@ -1,6 +1,6 @@
 {
   "name": "bem-pack",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Pack node-style source files from a stream of path's into a browser bundle",
   "keywords": [
     "BEM",
