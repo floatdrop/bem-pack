@@ -41,9 +41,11 @@ module.exports = 'base';
 module.exports = require('./base.js') + ' extended!';
 ```
 
-As you can see, snippet above will not work properly, because you should fix the path of the require call. Ofter there is no way to do this, because order of layers can change eventually. So we come up with this idea.
+As you can see, snippet above will not work properly, because you should fix the path of the require call. Ofter there is no way to do this, because order of layers can change eventually. So we come up with this idea:
 
-Every bundled file will "export" module with it BEM identifier. For example `base__elem.js` will export `base__elem` module, that can be required in next bundled javascript file:
+> Every bundled file will "export" module with it BEM identifier.
+
+For example `base__elem.js` will export `base__elem` module, that can be required in next bundled javascript file:
 
 ```js
 // base/base.js
