@@ -1,0 +1,28 @@
+{
+  "name": "bem-pack",
+  "version": "0.0.0",
+  "description": "Pack node-style source files from a stream of path's into a browser bundle",
+  "keywords": [
+    "BEM",
+    "browserify",
+    "packing",
+    "javascript"
+  ],
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/floatdrop/bem-pack.git"
+  },
+  "dependencies": {
+    "browserify": "^5.10.1",
+    "through2": "^0.6.1"
+  },
+  "devDependencies": {
+    "should": "^4.0.4",
+    "mocha": "*"
+  },
+  "main": "index.js"
+}
