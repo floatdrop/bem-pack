@@ -1,30 +1,28 @@
-/* global it */
-
+/* global describe, it */
 var gulp = require('gulp');
+var bempack = require('../');
 var join = require('path').join;
-var pack = require('../');
-
-var oneFile         = join(__dirname, 'fixtures/one-file', '**', '*.js');
-var twoSameFiles    = join(__dirname, 'fixtures/two-same-files');
 
 require('should');
+var oneFile = join(__dirname, 'fixtures/one.js');
 
-it('should pack single module', function (done) {
-    gulp.src(oneFile)
-        .pipe(pack('index.js'))
-        .on('data', function (data) {
-            var f = new Function('return ' + data.contents.toString())();
-            f(1).should.be.eql('Hello!');
+describe('gulp-bem-pack', function() {
+    describe('bempack()', function() {
+        it('should bundle one file', function(done) {
+            gulp.src(oneFile)
+                .pipe(bempack('test.js'))
+                .on('data', function (obj) {
+                    var f = new Function('return ' + obj.contents.toString())();
+                    f(1).should.eql('Hello!');
+                    done();
+                })
+                .on('error', done);
+        });
+
+        it('should not fail if no files were input', function(done) {
+            var stream = bempack('test.js');
+            stream.end();
             done();
         });
-});
-
-it('should pack modules with same file name', function (done) {
-    gulp.src([join(twoSameFiles, 'base/base.js'), join(twoSameFiles, 'main/base.js')])
-        .pipe(pack('index.js'))
-        .on('data', function (data) {
-            var f = new Function('return ' + data.contents.toString())();
-            f(2).should.be.eql('main is overriding base');
-            done();
-        });
+    });
 });

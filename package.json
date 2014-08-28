@@ -1,5 +1,5 @@
 {
-  "name": "gulp-bem-js-pack",
+  "name": "gulp-bem-pack",
   "version": "0.0.2",
   "description": "Packing CommonJS modules in BEM-compatible way",
   "keywords": [
@@ -17,7 +17,7 @@
     "url": "git://github.com/floatdrop/bem-pack.git"
   },
   "dependencies": {
-    "browserify": "^5.10.1",
+    "bem-pack": "^0.1.0",
     "gulp-util": "^3.0.0",
     "should": "^4.0.4",
     "through2": "^0.6.1"
