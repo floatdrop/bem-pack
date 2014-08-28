@@ -1,6 +1,6 @@
 # bem-pack
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url]
 
 Pack node-style source files from a stream of path's into a browser bundle with require layering support.
 
@@ -48,3 +48,9 @@ MIT (c) 2014 Vsevolod Strukchinsky
 
 [travis-url]: http://travis-ci.org/floatdrop/bem-pack
 [travis-image]: http://img.shields.io/travis/floatdrop/bem-pack.svg?branch=master&style=flat
+
+[depstat-url]: https://david-dm.org/floatdrop/bem-pack
+[depstat-image]: http://img.shields.io/david/floatdrop/bem-pack.svg?style=flat
+
+[coveralls-url]: https://coveralls.io/r/floatdrop/bem-pack
+[coveralls-image]: http://img.shields.io/coveralls/floatdrop/bem-pack.svg?style=flat
