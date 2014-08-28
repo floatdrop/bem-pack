@@ -1,6 +1,6 @@
 {
   "name": "gulp-bem-pack",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Packing CommonJS modules in BEM-compatible way",
   "keywords": [
     "BEM",
