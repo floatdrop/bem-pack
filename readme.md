@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-Pack node-style source files from a stream of path's into a browser bundle with redefinition support.
+Pack node-style source files from a stream of path's into a browser bundle with require layering support.
 
 __Note:__ This plugin is __highly__ sensitive to order, in which you call `add` method.
 
@@ -18,6 +18,10 @@ pack.add('base/base.js');
         console.log(buf.toString());
     });
 ```
+
+## Require layering
+
+
 
 ## API
 

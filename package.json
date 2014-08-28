@@ -10,7 +10,8 @@
   ],
   "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,10 @@
   },
   "devDependencies": {
     "should": "^4.0.4",
-    "mocha": "*"
+    "mocha": "*",
+    "coveralls": "^2.7.0",
+    "istanbul": "^0.3.0",
+    "mocha-lcov-reporter": "^0.0.1"
   },
   "main": "index.js"
 }
